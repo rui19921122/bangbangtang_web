@@ -1,0 +1,31 @@
+{% extends "mobile/base.html" %}
+{% block header %}
+<header class="navbar">
+<div class="nav-wrap-left">
+    <a href="" class="react back"><i class="text-icon fa fa-backward"></i></a>
+</div>
+    <span class="nav-header h1">美团网</span>
+<div class="nav-wrap-right">
+    <a href="" class="react">
+        <span><i class="text-icon fa fa-search"></i>搜索</span>
+    </a>
+</div></header>
+{% endblock %}
+{% block main %}
+<form action="" method="post">
+    <dl class="list">
+        {% csrf_token %}
+        {% for filed in form %}
+            {% if filed.errors %}
+                <dd class="dd-padding error"> {{ filed.errors }} </dd>
+            {% endif %}
+            <dd class="dd-padding">{{ filed }}</dd>
+        {% endfor %}
+    </dl>
+    <div class="btn-wrapper">
+        <button id="submit" type="submit" class="btn btn-large btn-block ">登陆</button></div>
+</form>
+    <ul class="subline"><li><a href="">立即注册</a></li>
+    <li class="pull-right"><a href="">找回密码</a></li>
+    </ul>
+{% endblock %}

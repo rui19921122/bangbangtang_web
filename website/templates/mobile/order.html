@@ -1,0 +1,82 @@
+{% extends "mobile/base.html" %}
+{% block header %}
+    <header class="navbar">
+        <div class="nav-wrap-left">
+            <a href="" class="react back">
+                <i class="text-icon fa fa-backward"></i>
+            </a>
+        </div>
+        <span class="nav-header h1">订单详情</span>
+        <div class="nav-wrap-right">
+            <a href="" class="react"><i class="text-icon fa fa-home"></i>首页</a>
+            <a href="" class="react"><i class="text-icon fa fa-search"></i>搜索</a>
+        </div>
+    </header>
+{% endblock %}
+{% load staticfiles %}
+{% block main %}
+    <dl class="list">
+        <dd>
+            <a href="" class="react">
+                <div class="dealcard">
+                    {% if single_course.hot %}
+                        <span class="dealcard-classhot"></span>
+                    {% else %}
+                    {% endif %}
+                    <div class="dealcard-img imgbox">
+                        <img src="
+                                            {% if single_course.pic %}{{ single_course.pic }}{% else %}{% static "img/test.jpg" %}{% endif %}"
+                             alt="" style="width: 100%"/>
+                    </div>
+                    <div class="dealcard-block-right">
+                        <div class="dealcard-brand single-line">{{ single_course.name }}</div>
+                        <div class="title text-block">{{ single_course.single_detail }}</div>
+                        <div class="price">
+                                <span class="strong">
+                                    {{ single_course.price }}
+                                </span><span class="strong-color">
+                                元
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </dd>
+    </dl>
+    <dl class="list">
+        <dd>
+            <a href="" class="react">
+                <span class="stars">
+                    <i class="text-icon fa fa-star-o"></i>
+                    <i class="text-icon fa fa-star-o"></i>
+                    <i class="text-icon fa fa-star-o"></i>
+                    <i class="text-icon fa fa-star-o"></i>
+                    <i class="text-icon fa fa-star-o"></i>
+                    <em class="star-text">{{ star|default:"0.0"}}</em>
+                </span>
+                <span class="more-after">去评价</span>
+            </a>
+        </dd>
+    </dl>
+    <dl class="list">
+        <dt>课程</dt>
+    <dd class="dd-padding">
+        <ul class="ul">
+            <li>lorem10</li>
+            <li>lorem10</li>
+            <li>lorem10</li>
+            <li>lorem10</li>
+            <li>lorem10</li>
+        </ul>
+    </dd>
+    <dd class="db">
+        <a href="" class="react">查看图文详情</a>
+    </dd>
+    </dl>
+    <dl class="list">
+        <dd><dt>订单详情</dt><ul class="ul">
+        <li>订单编号:5124124124</li>
+        <li>下单时间:2015-05-25 10:02</li>
+        <li>成交时间:2015-05-25 10:21</li>
+    </ul>
+    </dl>
+{% endblock %}

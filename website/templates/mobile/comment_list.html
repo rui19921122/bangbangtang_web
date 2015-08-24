@@ -1,0 +1,38 @@
+{% extends "mobile/base.html" %}
+{% block header %}
+    <header class="navbar">
+        <div class="nav-wrap-left">
+            <a href="javascript:history.go(-1)" class="react back"><i class="text-icon fa fa-backward"></i></a>
+        </div>
+        <span class="nav-header h1">评价</span>
+        <div class="nav-wrap-right">
+            <a href="" class="react">
+                <span>搜索</span>
+            </a>
+        </div></header>
+{% endblock %}
+{% block main %}
+{% for single_comment in comment %}
+    <dl class="list">
+        <dd class="dd-padding">
+            <div class="feedbackCard">
+                <div class="userInfo">
+                    <span class="color-weak username">{{ single_comment.commit_person.username }}</span>
+                </div>
+                <div class="score">
+                <span class="stars">
+                    <i class="text-icon fa fa-star-o"></i>
+                    <i class="text-icon fa fa-star-o"></i>
+                    <i class="text-icon fa fa-star-o"></i>
+                    <i class="text-icon fa fa-star-o"></i>
+                    <i class="text-icon fa fa-star-o"></i>
+            </span>
+                    <span class="color-weak time">{{ single_comment.time }}</span></div>
+            </div>
+            <div class="comment">
+                <div class="toggleContent"><p>{{ single_comment.content }}</p></div>
+            </div>
+        </dd>
+    </dl>
+{% endfor %}
+{% endblock %}

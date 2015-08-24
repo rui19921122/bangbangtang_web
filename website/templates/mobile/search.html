@@ -1,0 +1,35 @@
+{% extends "mobile/base.html" %}
+{% load staticfiles %}
+{% block header %}
+{% endblock %}
+{% block title %}
+    搜索——大风车网站
+{% endblock %}
+{% block addition-stastic %}
+    <link rel="stylesheet" href="{% static "css/search.css" %}">
+{% endblock %}
+{% block main %}
+    <header class="navbar">
+        <div class="nav-warp-left"><a href="" class="back react"><i class="text-icon fa fa-backward"></i></a></div>
+        <span class="nav-header h1">搜索</span>
+        <div class="nav-wrap-right"><a href="" class="react">首页</a></div>
+    </header>
+    <div class="search-wrapper">
+    <form action="http://localhost:8000/api/search" id="search-form" method="get" style="display: block">
+    <div class="box-search" style="display: block!important;">
+        <i class="fa-search fa text-icon"></i>
+        <input type="text"  name="w" id="keyword" placeholder="输入课程名或者学校名称" autocomplete="off" value="">
+    </div>
+        <button id="search" type="submit" class="btn" disabled="disabled">搜索</button></form>
+{% endblock %}
+{% block script %}
+    <script>
+    $(document).ready(function(){
+        var search_btn = $("#search");
+        var input_area = $("#keyword");
+        input_area.bind("propertychange input",function(){
+            console.log(1)
+            })
+        });
+    </script>
+{% endblock %}

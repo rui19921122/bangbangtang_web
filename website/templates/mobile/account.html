@@ -1,0 +1,54 @@
+{% extends 'mobile/base.html' %}
+{% load staticfiles %}
+{% block header %}
+    <header class="navbar">
+        <div class="nav-wrap-left">
+            <a href="javascript:history.go(-1)" class="react back"><i class="text-icon fa fa-backward"></i></a>
+        </div>
+        <span class="nav-header h1">我的棒棒糖</span>
+        <div class="nav-wrap-right">
+            <a href="" class="react">
+                <span>搜索</span>
+            </a>
+        </div></header>
+{% endblock %}
+{% block main %}
+    <dl class="list">
+        <dd class="dd-padding">用户名：{{ user.name }}</dd>
+        <dd class="dd-padding">注册邮箱：{{ user.email|default:'无' }}</dd>
+        <dd class="dd-padding">电话号码：{{ user.tel_phone|default:'无' }}</dd>
+        <dd class="dd-padding">地址：{{ user.address|default:'无' }}</dd>
+    </dl>
+    <dl class="list">
+    <dd>
+    <dl class="list">
+    <dt>我关注的课程</dt>
+{% for single_course in attention %}
+    <dd>
+        <a href="{% url 'course' single_course.id %}" class="react">
+            <div class="dealcard">
+                {% if single_course.hot %}
+                    <span class="dealcard-classhot"></span>
+                {% else %}
+                {% endif %}
+                <div class="dealcard-img imgbox">
+                    <img src="
+                                            {% if single_course.pic %}{{ single_course.pic }}{% else %}{% static "img/test.jpg" %}{% endif %}"
+                         alt="" style="width: 100%"/>
+                </div>
+                <div class="dealcard-block-right">
+                    <div class="dealcard-brand single-line">{{ single_course.name }}</div>
+                    <div class="title text-block">{{ single_course.single_detail }}</div>
+                    <div class="price">
+                                <span class="strong">
+                                    {{ single_course.price }}
+                                </span><span class="strong-color">
+                                元
+                            </span><span class="line-right">已售{{ single_course.sold }}个</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </dd></dl></dd></dl>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "mobile/base.html" %}
+{% block main %}
+    {% load staticfiles %}
+            {% if attention_course %}
+                <dl class="list">
+                    <dd>
+                        <dl class="list">
+                            <dt>我关注的课程</dt>
+                {% for single_course in attention_course %}
+                    <dd>
+                        <a href="{% url 'course' single_course.id %}" class="react">
+                            <div class="dealcard">
+                                {% if single_course.hot %}
+                                    <span class="dealcard-classhot"></span>
+                                {% else %}
+                                {% endif %}
+                                <div class="dealcard-img imgbox">
+                                    <img src="
+                                            {% if single_course.pic %}{{ single_course.pic }}{% else %}{% static "img/test.jpg" %}{% endif %}"
+                                         alt="" style="width: 100%"/>
+                                </div>
+                                <div class="dealcard-block-right">
+                                    <div class="dealcard-brand single-line">{{ single_course.name }}</div>
+                                    <div class="title text-block">{{ single_course.single_detail }}</div>
+                                    <div class="price">
+                                <span class="strong">
+                                    {{ single_course.price }}
+                                </span><span class="strong-color">
+                                元
+                            </span><span class="line-right">已售{{ single_course.sold }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </dd>
+                {% endfor %}
+            </dl>
+        </dd></dl>
+    {% endif %}
+    <dl class="list">
+        <dd>
+            <dl class="list">
+                <dt>推荐课程</dt>
+                {% for single_course in courses %}
+                    <dd>
+                        <a href="{% url 'course' single_course.id %}" class="react">
+                            <div class="dealcard">
+                            {% if single_course.hot %}
+                                <span class="dealcard-classhot"></span>
+                            {% else %}
+                            {% endif %}
+                                <div class="dealcard-img imgbox">
+                                    <img src="
+                                            {% if single_course.pic %}{{ single_course.pic }}{% else %}{% static "img/test.jpg" %}{% endif %}"
+                                         alt="" style="width: 100%"/>
+                                </div>
+                                <div class="dealcard-block-right">
+                                    <div class="dealcard-brand single-line">{{ single_course.name }}</div>
+                                    <div class="title text-block">{{ single_course.single_detail }}</div>
+                                    <div class="price">
+                                <span class="strong">
+                                    {{ single_course.price }}
+                                </span><span class="strong-color">
+                                元
+                            </span><span class="line-right">已售{{ single_course.sold }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </dd>
+                {% endfor %}
+            </dl>
+        </dd>
+    </dl>{% endblock %}
